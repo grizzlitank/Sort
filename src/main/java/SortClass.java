@@ -3,7 +3,17 @@ import java.util.*;
 public class SortClass{
 
 
-    public void listSort( List<List<String>> strings){
+    public List<String> listSort( List<List<String>> strings){
+        for(int i = 0; i < strings.size(); i++){
+            List<String> list = new ArrayList<String>(strings.get(i));
+            if(list.size() == 3) list.remove(2);
+            else if(list.size() == 2) list.remove( 1);
+            int count = 0;
+            for(List<String> listls : strings){
+                if(list.equals(listls)) count++;
+            }
+            if(count == 0) strings.add(list);
+        }
         Collections.sort(strings, new Comparator<List<String>>() {
 
             public int compare(List<String> list1, List<String> list2) {
@@ -34,6 +44,16 @@ public class SortClass{
                 return 0;
             }
         });
+        List<String> listOfStrings = new ArrayList<String>();
+        String a = "";
+        for(List<String> list : strings){
+            for(String b : list){
+                if(b.startsWith("K")) a+=b; else a+= "\\" + b;
+            }
+            listOfStrings.add(a);
+            a="";
+        }
+        return listOfStrings;
     }
 
     public List<String> stringSplit(String stringForSplit){

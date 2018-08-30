@@ -4,9 +4,9 @@ public class Main {
         System.out.println(
                 SortList.sortList
         );
-        sortClass.listSort(sortClass.getList(SortList.sortList));
+
         System.out.println(
-                SortList.sortList
+                sortClass.listSort(sortClass.getList(SortList.sortList))
         );
 
     }
